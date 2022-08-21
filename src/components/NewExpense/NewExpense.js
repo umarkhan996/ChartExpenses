@@ -3,13 +3,25 @@ import React from 'react';
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
 
-const NewExpense = () => {
+const NewExpense = (props) => {
+
+    // we can call a function in new component in  we pass data as a parameter, Can communicate the component to app.  
+    const saveExpenseDataHandler = (enteredExpenseData) => {
+        const expenseData = {
+            ...enteredExpenseData,
+            id: Math.random().toString()
+        };
+        // console.log(expenseData);
+        props.onAddExpense(expenseData);
+    };
+
+
     return ( <
         div className = 'new-expense' >
         <
-        ExpenseForm / >
-        <
-        /div>
+        ExpenseForm onSaveExpenseData = { saveExpenseDataHandler }
+        / > < /
+        div >
 
 
 

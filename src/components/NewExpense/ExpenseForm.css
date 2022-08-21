@@ -8,7 +8,6 @@
 
 .new-expense__control label {
     font-weight: bold;
-    gap: 10rem;
     margin-bottom: 0.5rem;
     display: block;
 }
