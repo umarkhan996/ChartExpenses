@@ -3,6 +3,7 @@ import ExpenseItem from "./ExpenseItem";
 import Card from "../UI_Compo/Card";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from './ExpensesList';
+import ExpensesChart from "./ExpensesChart";
 import "./Expenses.css";
 
 const Expenses = (props) => {
@@ -10,24 +11,9 @@ const Expenses = (props) => {
     const filterChangeHandler = (selectedYear) => {
         setFilteredYear(selectedYear);
     };
-    const filteredExpnses = props.items.filter((expense) => {
+    const filteredExpenses = props.items.filter((expense) => {
         return expense.date.getFullYear().toString() === filteredYear;
     });
-
-    // We can give a massage when we have not any expenses (Best way)
-
-    // let expensesContent = < p > No expenses Found. < /p>;
-    // if (filteredExpnses.length > 0) {
-    //     expensesContent = filteredExpnses.map((expense) => ( <
-    //         ExpenseItem key = { expense.id }
-    //         title = { expense.title }
-    //         amount = { expense.amount }
-    //         date = { expense.date }
-    //         />
-
-    //     ));
-    // }
-
 
 
     return ( <
@@ -39,9 +25,12 @@ const Expenses = (props) => {
         onChangeFilter = { filterChangeHandler }
         />
 
+        <
+        ExpensesChart expenses = { filteredExpenses }
+        />
 
         <
-        ExpensesList items = { filteredExpnses }
+        ExpensesList items = { filteredExpenses }
         /> < /
         Card > < /
         div >
